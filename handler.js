@@ -46,13 +46,13 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.exp))
                     user.exp = 0
                 if (!isNumber(user.limit))
-                    user.limit = 100
+                    user.limit = 1000
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
                 if (!isNumber(user.pasangan))
                     user.pasangan = ''
                 if (!('registered' in user))
-                    user.registered = false
+                    user.registered = true
                 if (!user.registered) {
                     if (!('name' in user))
                         user.name = m.name
@@ -70,14 +70,14 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.warn))
                     user.warn = 0
                 if (!isNumber(user.level))
-                    user.level = 0
+                    user.level = 1
                 if (!('role' in user))
                     user.role = 'Beginner'
                 if (!('autolevelup' in user))
                     user.autolevelup = true
 
                 if (!isNumber(user.money))
-                    user.money = 0
+                    user.money = 10000
                 if (!isNumber(user.atm))
                     user.atm = 0
                 if (!isNumber(user.fullatm))
@@ -198,13 +198,13 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.premiumTime))
                     user.premiumTime = 0
                 if (!isNumber(user.limitjoin))
-                    user.limitjoin = 0
+                    user.limitjoin = 100
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 100,
+                    limit: 1000,
                     lastclaim: 0,
-                    registered: false,
+                    registered: true,
                     name: m.name,
                     pasangan: '',
                     age: -1,
@@ -213,11 +213,11 @@ export async function handler(chatUpdate) {
                     afkReason: '',
                     banned: false,
                     warn: 0,
-                    level: 0,
+                    level: 1,
                     role: 'Beginner',
                     autolevelup: true,
 
-                    money: 0,
+                    money: 10000,
                     bank: 0,
                     atm: 0,
                     fullatm: 0,
@@ -278,7 +278,7 @@ export async function handler(chatUpdate) {
                     
                     premium: false,
                     premiumTime: 0,
-                    limitjoin: 0,
+                    limitjoin: 100,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
@@ -291,13 +291,13 @@ export async function handler(chatUpdate) {
                 if (!('detect' in chat))
                     chat.detect = false
                 if (!('sWelcome' in chat))
-                    chat.sWelcome = ''
+                    chat.sWelcome = 'hai beban hidup'
                 if (!('sBye' in chat))
-                    chat.sBye = ''
+                    chat.sBye = 'selamat tinggal beban hidup'
                 if (!('sPromote' in chat))
-                    chat.sPromote = ''
+                    chat.sPromote = 'selamat kamu naik pangkat'
                 if (!('sDemote' in chat))
-                    chat.sDemote = ''
+                    chat.sDemote = 'kasihan jadi member biasa'
                 if (!('delete' in chat))
                     chat.delete = true
                 if (!('antiLink' in chat))
@@ -319,12 +319,12 @@ export async function handler(chatUpdate) {
                     isBanned: false,
                     welcome: true,
                     detect: false,
-                    sWelcome: '',
-                    sBye: '',
-                    sPromote: '',
-                    sDemote: '',
-                    delete: true,
-                    antiLink: false,
+                    sWelcome: 'hai beban hidup',
+                    sBye: 'selamat tinggal beban hidup',
+                    sPromote: 'selamat kamu naik pangkat',
+                    sDemote: 'kasihan jadi member biasa',
+                    delete: false,
+                    antiLink: true,
                     viewonce: false,
                     antiToxic: true,
                     simi: false,
@@ -336,14 +336,14 @@ export async function handler(chatUpdate) {
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                 if (!('self' in settings)) settings.self = false
-                if (!('autoread' in settings)) settings.autoread = true
+                if (!('autoread' in settings)) settings.autoread = false
                 if (!('restrict' in settings)) settings.restrict = true
                 if (!('jadibot' in settings)) settings.jadibot = false
                 if (!('autorestart' in settings)) settings.autorestart = true
                 if (!('restartDB' in settings)) settings.restartDB = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
-                autoread: true,
+                autoread: false,
                 jadibot: false,
                 restrict: true,
                 autorestart: true,
